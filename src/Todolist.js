@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import store from './store';
-import { getInputCHangeAction, getAddItemAction, getDeleleItemAction } from './store/actionCreators';
+import { getInputCHangeAction, getAddItemAction, getDeleleItemAction, initListAction, getInitList} from './store/actionCreators';
 import TodoListUI from './TodoListUI';
+import axios from 'axios';
+
 
 
 class Todolist extends Component {
@@ -30,6 +32,28 @@ class Todolist extends Component {
     );
   }
 
+  componentDidMount() {
+    const action = getInitList();
+    store.dispatch(action);
+    // console.log(action);
+   //  axios.get("https://www.easy-mock.com/mock/5a8e7ae4f6208b69f2c27ee2/test1/api/item")
+   //  .then((res) => {
+   //    const data = res.data.list;
+   //    const action = initListAction(data);
+   //    store.dispatch(action);
+   // })
+
+    // const action = getTodoList();
+    // store.dispatch(action);
+    // console.log(action);
+    // axios.get("https://www.easy-mock.com/mock/5a8e7ae4f6208b69f2c27ee2/test1/api/item").then((res) => {
+    //   const data = res.data.list;
+    //   // console.log(data);
+    //   const action = initListAction(data);
+    //   store.dispatch(action);
+    // })
+  }
+
   handleInputChange(e) {
    
     const action = getInputCHangeAction(e.target.value);
@@ -48,7 +72,7 @@ class Todolist extends Component {
 
   handleItemDelete(index) {
     // alert(index);
-    console.log(index);
+    // console.log(index);
     const action = getDeleleItemAction(index);
     store.dispatch(action);
   }
