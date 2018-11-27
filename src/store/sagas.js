@@ -4,9 +4,13 @@ import axios from 'axios';
 import { initListAction } from './actionCreators'
 
 function* getInitList() {
-	const res = yield axios.get("https://www.easy-mock.com/mock/5a8e7ae4f6208b69f2c27ee2/test1/api/item");
-	const action = initListAction(res.data.list);
-	yield put(action);
+	try {
+		const res = yield axios.get("https://www.easy-mock.com/mock/5a8e7ae4f6208b69f2c27ee2/test1/api/item");
+		const action = initListAction(res.data.list);
+		yield put(action);
+	}catch(e) {
+		console.log("网络请求失败");
+	}
 	// console.log("ac");
 }
 // generator 函数
