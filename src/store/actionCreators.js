@@ -1,7 +1,7 @@
 import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION, GET_INIT_LIST } from './actionTypes';
 // import axios from 'axios';
 
-export const getInputCHangeAction = (value) =>({
+export const getInputChangeAction = (value) =>({
 	type: CHANGE_INPUT_VALUE,
     value
 });
